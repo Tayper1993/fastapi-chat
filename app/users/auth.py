@@ -15,7 +15,7 @@ def create_access_token(data: dict) -> str:
     return encode_jwt
 
 
-pwd_context = CryptContext(schemas=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 def get_password_hash(password: str) -> str:
