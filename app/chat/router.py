@@ -50,23 +50,29 @@ async def websocket_endpoint(websocket: WebSocket, user_id: int):
         active_connections.pop(user_id, None)
 
 
+@router.get("/messages/{user_id}", response_model=List[MessageRead])
+async def get_messages(user_id: int, current_user: User = Depends(get_current_user)):
+    # Возвращаем список сообщений между текущим пользователем и другим пользователем
+    return await MessagesDAO.get_messages_between_users(user_id_1=user_id, user_id_2=current_user.id) or []
+
+
+# Отправка сообщения от текущего пользователя
 @router.post("/messages", response_model=MessageCreate)
-async def send_messages(message: MessageCreate, current_user: User = Depends(get_current_user)):
+async def send_message(message: MessageCreate, current_user: User = Depends(get_current_user)):
     # Добавляем новое сообщение в БД
     await MessagesDAO.add(
         sender_id=current_user.id,
         content=message.content,
-        recipient_id=message.id,
+        recipient_id=message.recipient_id
     )
     # Подготавливаем данные для отправки сообщения
     message_data = {
         'sender_id': current_user.id,
-        'recipient_id': message.id,
+        'recipient_id': message.recipient_id,
         'content': message.content,
     }
     # Уведомляем получателя и отправителя через WebSocket
     await notify_user(message.recipient_id, message_data)
     await notify_user(current_user.id, message_data)
 
-    # Возвращаем подтверждение сохранения сообщения
     return {'recipient_id': message.recipient_id, 'content': message.content, 'status': 'ok', 'msg': 'Message saved!'}
