@@ -1,15 +1,22 @@
+from typing import List
+
 from fastapi import APIRouter, Response
 from fastapi.requests import Request
 from fastapi.responses import HTMLResponse
 from app.exceptions import UserAlreadyExistsException, IncorrectEmailOrPasswordException, PasswordMismatchException
 from app.users.auth import get_password_hash, authenticate_user, create_access_token
 from app.users.dao import UsersDAO
-from app.users.schemas import SUserRegister, SUserAuth
+from app.users.schemas import SUserRegister, SUserAuth, SUserRead
 from fastapi.templating import Jinja2Templates
 
 router = APIRouter(prefix='/auth', tags=['Auth'])
 templates = Jinja2Templates(directory='app/templates')
 
+
+@router.get("/users", response_model=List[SUserRead])
+async def get_users():
+    users_all = await UsersDAO.find_all()
+    return [{'id': user.id, 'name': user.name} for user in users_all]
 
 @router.post("/register/")
 async def register_user(user_data: SUserRegister) -> dict:

@@ -10,4 +10,4 @@ class MessageRead(BaseModel):
 
 class MessageCreate(BaseModel):
     recipient_id: int = Field(..., description="ID получателя сообщения")
-    content: int = Field(..., description="Содержимое сообщения")
+    content: str = Field(..., description="Содержимое сообщения")
