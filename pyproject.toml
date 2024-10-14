@@ -1,0 +1,73 @@
+[project]
+name = 'fastapi-chat'
+version = '0.1.0'
+description = 'Чат на FastAPI'
+requires-python = ">=3.12"
+dependencies = [
+    'fastapi',
+    'uvicorn[standard]',
+    'sqlalchemy[asyncio]',
+    'python-dotenv',
+    'pydantic-settings',
+    'pre-commit',
+    'websockets',
+]
+
+[project.optional-dependencies]
+dev = [
+    'pip-tools',
+    'pre-commit',
+    'black',
+    'ruff',
+]
+
+[tool.setuptools]
+py-modules = []
+
+[tool.isort]
+profile = 'black'
+line_length = 120
+lines_after_imports = 2
+lines_between_sections = 1
+lines_between_types = 0
+force_alphabetical_sort_within_sections = true
+ensure_newline_before_comments = true
+combine_as_imports = true
+combine_star = true
+skip_gitignore = true
+balanced_wrapping = true
+
+[tool.black]
+line-length = 120
+skip-string-normalization = true
+
+[tool.flake8]
+max-line-length = 120
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+pythonpath = ["."]
+
+[tool.ruff]
+# select = ["F", "E", "W", "C90",
+#           "I", "N", "S", "B", "A",
+#           "ISC", "T20", "Q", "PTH"]
+# ignore = ["A003"]
+
+# Same as Black.
+line-length = 88
+indent-width = 4
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+[tool.pyright]
+venvPath = "."
+venv = ".env"
