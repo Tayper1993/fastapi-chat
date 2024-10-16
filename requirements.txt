@@ -4,76 +4,82 @@
 #
 #    pip-compile --output-file=requirements.txt pyproject.toml
 #
+aiosqlite==0.20.0
+    # via fastapi-chat (pyproject.toml)
+alembic==1.13.3
+    # via fastapi-chat (pyproject.toml)
 annotated-types==0.7.0
     # via pydantic
-anyio==4.6.2
-    # via
-    #   starlette
-    #   watchfiles
-cfgv==3.4.0
-    # via pre-commit
+anyio==4.6.2.post1
+    # via starlette
+bcrypt==4.0.1
+    # via fastapi-chat (pyproject.toml)
 click==8.1.7
     # via uvicorn
-distlib==0.3.9
-    # via virtualenv
-fastapi==0.115.2
+dnspython==2.7.0
+    # via email-validator
+ecdsa==0.19.0
+    # via python-jose
+email-validator==2.2.0
+    # via pydantic
+fastapi==0.115.0
     # via fastapi-chat (pyproject.toml)
-filelock==3.16.1
-    # via virtualenv
 greenlet==3.1.1
     # via sqlalchemy
 h11==0.14.0
     # via uvicorn
-httptools==0.6.1
-    # via uvicorn
-identify==2.6.1
-    # via pre-commit
 idna==3.10
-    # via anyio
-nodeenv==1.9.1
-    # via pre-commit
-platformdirs==4.3.6
-    # via virtualenv
-pre-commit==4.0.1
+    # via
+    #   anyio
+    #   email-validator
+jinja2==3.1.4
     # via fastapi-chat (pyproject.toml)
-pydantic==2.9.2
+mako==1.3.5
+    # via alembic
+markupsafe==3.0.1
+    # via
+    #   jinja2
+    #   mako
+passlib==1.7.4
+    # via fastapi-chat (pyproject.toml)
+pyasn1==0.6.1
+    # via
+    #   python-jose
+    #   rsa
+pydantic[email]==2.9.2
     # via
     #   fastapi
+    #   fastapi-chat (pyproject.toml)
     #   pydantic-settings
 pydantic-core==2.23.4
     # via pydantic
 pydantic-settings==2.5.2
     # via fastapi-chat (pyproject.toml)
 python-dotenv==1.0.1
-    # via
-    #   fastapi-chat (pyproject.toml)
-    #   pydantic-settings
-    #   uvicorn
-pyyaml==6.0.2
-    # via
-    #   pre-commit
-    #   uvicorn
+    # via pydantic-settings
+python-jose==3.3.0
+    # via fastapi-chat (pyproject.toml)
+rsa==4.9
+    # via python-jose
+six==1.16.0
+    # via ecdsa
 sniffio==1.3.1
     # via anyio
-sqlalchemy[asyncio]==2.0.35
-    # via fastapi-chat (pyproject.toml)
-starlette==0.39.2
+sqlalchemy==2.0.35
+    # via
+    #   alembic
+    #   fastapi-chat (pyproject.toml)
+starlette==0.38.6
     # via fastapi
 typing-extensions==4.12.2
     # via
+    #   aiosqlite
+    #   alembic
     #   fastapi
     #   pydantic
     #   pydantic-core
     #   sqlalchemy
-uvicorn[standard]==0.31.1
+uvicorn==0.31.0
     # via fastapi-chat (pyproject.toml)
-uvloop==0.20.0
-    # via uvicorn
-virtualenv==20.26.6
-    # via pre-commit
-watchfiles==0.24.0
-    # via uvicorn
 websockets==13.1
-    # via
-    #   fastapi-chat (pyproject.toml)
-    #   uvicorn
+    # via fastapi-chat (pyproject.toml)
