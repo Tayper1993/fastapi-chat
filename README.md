@@ -23,6 +23,12 @@ pip-compile -o requirements.txt pyproject.toml
 ```bash
 pip install -r requirements.txt
 ```
+#### Добавление `dev` зависимости проекта:
+* Добавляем новую зависимость в список `dev` в `project.optional-dependencies` в `pyproject.toml`
+* Генерируем обновленный `requirements-dev.txt`
+```bash
+pip-compile --extra=dev -o requirements-dev.txt pyproject.toml
+```
 
 
 ## Конфигурация:
