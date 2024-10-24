@@ -53,6 +53,7 @@ pip-compile --extra=dev -o requirements-dev.txt pyproject.toml
 
 ### TODO
 - [ ] **Postgresql**: мигририровать с sqlite
+- [ ] **Test**: написать тесты
 - [ ] **Docker-compose**: сделать
 - [ ] **CI/CD Job**: pre-commit
 - [ ] **CI/CD Job**: test
