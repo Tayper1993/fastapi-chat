@@ -50,3 +50,9 @@ pip-compile --extra=dev -o requirements-dev.txt pyproject.toml
    ```shell
    pre-commit run -a
    ```
+
+### TODO
+- [ ] **Postgresql**: мигририровать с sqlite
+- [ ] **Docker-compose**: сделать
+- [ ] **CI/CD Job**: pre-commit
+- [ ] **CI/CD Job**: test
